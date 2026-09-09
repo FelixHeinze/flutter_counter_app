@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components/my_button.dart';
+import 'in_de_crement.dart';
 
 void main() {
   runApp(const MyApp());
@@ -105,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
+            const Text('Counter:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -113,10 +114,35 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          MyButton(
+            text: '+',
+            onTap: () => incrementCounterBy(1),
+          ),
+          MyButton(
+            text: '+2',
+            onTap: () => incrementCounterBy(2),
+          ),
+          MyButton(
+            text: '-',
+            onTap: () => decrementCounterBy(1),
+          ),
+          MyButton(
+            text: '-2',
+            onTap: () => decrementCounterBy(2),
+          ),
+          MyButton(
+            text: '*2',
+            onTap: () => multiplyCounterBy(2),
+          ),
+          MyButton(
+            text: '/2',
+            onTap: () => halfCounter(),
+          ),
+          
+        ],
       ),
     );
   }
