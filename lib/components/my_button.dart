@@ -7,7 +7,7 @@ class MyButton extends StatelessWidget {
   const MyButton({super.key, required this.text, required this.onTap});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // vordefiniertes Widget für einen Button, der Text und onTap Funktionalität hat
     return ElevatedButton(
       onPressed: onTap,
       child: Container(

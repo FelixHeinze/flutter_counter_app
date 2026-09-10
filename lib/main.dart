@@ -6,9 +6,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -51,23 +56,15 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,29 +114,53 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          MyButton(
+          MyButton( // button vordefiniert in my_button.dart
             text: '+',
-            onTap: () => incrementCounterBy(1),
+            onTap: (){
+              setState(() { //  set state um zu sagen das sich der Wert geändert hat und die UI neu aufgebaut werden muss
+                _counter = incrementCounterBy(_counter,1);
+              });
+            },
           ),
           MyButton(
             text: '+2',
-            onTap: () => incrementCounterBy(2),
+            onTap: (){
+              setState(() {
+                _counter = incrementCounterBy(_counter,2);
+              });
+            },
           ),
           MyButton(
             text: '-',
-            onTap: () => decrementCounterBy(1),
+            onTap: (){
+              setState(() {
+                _counter = decrementCounterBy(_counter,1);
+              });
+            },
           ),
           MyButton(
             text: '-2',
-            onTap: () => decrementCounterBy(2),
+            onTap: (){
+              setState(() {
+                _counter = decrementCounterBy(_counter,2);
+              });
+            }  ,
           ),
           MyButton(
             text: '*2',
-            onTap: () => multiplyCounterBy(2),
+            onTap: (){
+              setState(() {
+                _counter = multiplyCounterBy(_counter, 2);
+              });
+            },
           ),
           MyButton(
             text: '/2',
-            onTap: () => halfCounter(),
+            onTap: (){
+              setState(() {
+                _counter = halfCounter(_counter);
+              });
+            },
           ),
           
         ],

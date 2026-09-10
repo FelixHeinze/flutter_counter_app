@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
-var _counter = 0;
-void setState(Null Function() param0) {}
 
-  void resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
+
+  int resetCounter(int value) {
+      value = 0;
+    return value;
   }
-  void incrementCounterBy(int value) {
-    setState(() {
-      _counter += value;
-    });
+  int incrementCounterBy(int value, int incrementValue) {
+      value += incrementValue;
+    return value;
   }
-  void decrementCounterBy(int value) {
-    setState(() {
-      _counter -= value;
-    });
+  int decrementCounterBy(int value, int decrementValue) {
+      value -= decrementValue;
+    return value;
   }
-  void multiplyCounterBy(int value) {
-    setState(() {
-      _counter *= value;
-    });
+  int multiplyCounterBy(int value, int multiplyValue) {
+       value *= multiplyValue;
+    return value;
   }
-void halfCounter() {
-    setState(() {
-      _counter ~/= 2;
-    });
+int halfCounter(int value) {
+      value ~/= 2;
+    return value;
   }
